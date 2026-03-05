@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Grind | Artisan Cafe</title>
+    <!-- Google Fonts for Aesthetic Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2C2C2C; /* Charcoal */
+            --accent-color: #D4A373; /* Gold/Beige */
+            --bg-color: #FAF9F6; /* Off-white/Cream */
+            --text-color: #4A4A4A;
+            --white: #ffffff;
+            --zomato-red: #cb202d;
+            --swiggy-orange: #fc8019;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent-color); }
+
+        .mobile-menu-btn { display: none; cursor: pointer; font-size: 1.5rem; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--white);
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* --- MENU SECTION --- */
+        /* .section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 1rem auto 0;
+        } */
+
+        /* .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover { transform: translateY(-5px); }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 0.5rem;
+        }
+
+        .item-name { font-weight: 700; font-size: 1.1rem; }
+        .item-price { color: var(--accent-color); font-weight: 700; }
+        .item-desc { font-size: 0.9rem; color: #777; font-style: italic; } */
+         /* --- MENU SECTION --- */
+        .section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 1rem auto 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden; /* Ensures image stays inside rounded corners */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item:hover { transform: translateY(-5px); }
+
+        /* Image Styling */
+        .menu-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-item:hover .menu-img {
+            transform: scale(1.05);
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-name { 
+            font-weight: 700; 
+            font-size: 1.2rem; 
+            color: var(--primary-color);
+        }
+        
+        .item-price { 
+            color: var(--accent-color); 
+            font-weight: 700; 
+            font-size: 1.1rem;
+        }
+
+        .item-desc { 
+            font-size: 0.9rem; 
+            color: #777; 
+            margin-top: 0.5rem;
+        }
+
+
+        /* --- ORDER SECTION (Zomato/Swiggy) --- */
+        .order-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .order-section h2 { color: var(--white); }
+        .order-section .section-title::after { background-color: var(--white); }
+
+        .order-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .order-btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s;
+            min-width: 200px;
+        }
+
+        .order-btn:hover { transform: scale(1.05); }
+
+        .btn-zomato { background-color: var(--zomato-red); color: white; }
+        .btn-swiggy { background-color: var(--swiggy-orange); color: white; }
+        .btn-visit { background-color: var(--white); color: var(--primary-color); }
+
+        /* --- LOCATION & HOURS --- */
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .info-box h3 { margin-bottom: 1rem; font-size: 1.5rem; }
+        .info-box p { margin-bottom: 0.5rem; }
+        
+        .map-frame {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 8px;
+            filter: grayscale(100%); /* Aesthetic grayscale map */
+            transition: filter 0.3s;
+        }
+        
+        .map-frame:hover { filter: grayscale(0%); }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: var(--bg-color);
+                width: 100%;
+                text-align: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            
+            .hero h1 { font-size: 2.5rem; }
+            .location-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">THE DAILY GRIND</div>
+        <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#order">Order Online</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Coffee, Culture & Community</h1>
+        <p>Experience the finest artisanal brews and freshly baked pastries in the heart of the city.</p>
+        <a href="#menu" class="btn">View Menu</a>
+    </section>
+
+    <!-- MENU SECTION -->
+    <!-- <section id="menu" class="section">
+        <h2 class="section-title">Our Favorites</h2>
+        <div class="menu-grid">
+             Item 1 -->
+            <!-- <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Caramel Macchiato</span>
+                    <span class="item-price">$5.50</span>
+                </div>
+                <p class="item-desc">Espresso, vanilla syrup, steamed milk, and caramel drizzle.</p>
+            </div> -->
+            <!-- Item 2 -->
+            <!-- <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Avocado Toast</span>
+                    <span class="item-price">$12.00</span>
+                </div>
+                <p class="item-desc">Sourdough bread, smashed avocado, chili flakes, and poached egg.</p>
+            </div> -->
+            <!-- Item 3 -->
+            <!-- <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Cold Brew</span>
+                    <span class="item-price">$4.50</span>
+                </div>
+                <p class="item-desc">Steeped for 20 hours for a smooth, rich flavor profile.</p>
+            </div> -->
+            <!-- Item 4 -->
+            <!-- <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Blueberry Muffin</span>
+                    <span class="item-price">$3.50</span>
+                </div>
+                <p class="item-desc">Baked fresh daily with organic blueberries and lemon zest.</p>
+            </div>
+        </div>
+    </section>  -->
+     <!-- MENU SECTION -->
+    <section id="menu" class="section">
+        <h2 class="section-title">Our Favorites</h2>
+        <div class="menu-grid">
+            
+            <!-- Item 1: Latte -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Caramel Macchiato" class="menu-img">
+                <div class="menu-content">
+                    <div class="item-header">
+                        <span class="item-name">Caramel Macchiato</span>
+                        <span class="item-price">₹150</span>
+                    </div>
+                    <p class="item-desc">Espresso, vanilla syrup, steamed milk, and caramel drizzle.</p>
+                </div>
+            </div>
+
+            <!-- Item 2: Avocado Toast -->
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/2983098/pexels-photo-2983098.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Avocado Toast" class="menu-img">
+                <div class="menu-content">
+                    <div class="item-header">
+                        <span class="item-name">Burger</span>
+                        <span class="item-price">₹120</span>
+                    </div>
+                    <p class="item-desc">Sourdough bread, grilled patty, chili flakes, and leafy vegetables.</p>
+                </div>
+            </div>
+
+            <!-- Item 3: Cold Brew -->
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/15991209/pexels-photo-15991209/free-photo-of-close-up-of-beer-glass.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cold Brew" class="menu-img">
+                <div class="menu-content">
+                    <div class="item-header">
+                        <span class="item-name">Nitro Cold Brew</span>
+                        <span class="item-price">₹200</span>
+                    </div>
+                    <p class="item-desc">Steeped for 20 hours for a smooth, rich flavor profile.</p>
+                </div>
+            </div>
+
+            <!-- Item 4: Croissant -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Croissant" class="menu-img">
+                <div class="menu-content">
+                    <div class="item-header">
+                        <span class="item-name">Butter Croissant</span>
+                        <span class="item-price">₹150</span>
+                    </div>
+                    <p class="item-desc">Flaky, buttery, and baked fresh every morning at 6 AM.</p>
+                </div>
+            </div>
+
+            <!-- Item 5: Pancakes -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pancakes" class="menu-img">
+                <div class="menu-content">
+                    <div class="item-header">
+                        <span class="item-name">Berry Pancakes</span>
+                        <span class="item-price">₹200</span>
+                    </div>
+                    <p class="item-desc">Stack of fluffy pancakes topped with fresh berries and maple syrup.</p>
+                </div>
+            </div>
+
+            <!-- Item 6: Matcha -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Matcha Latte" class="menu-img">
+                <div class="menu-content">
+                    <div class="item-header">
+                        <span class="item-name">Matcha Latte</span>
+                        <span class="item-price">₹150</span>
+                    </div>
+                    <p class="item-desc">Premium ceremonial grade matcha whisked with oat milk.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ORDER SECTION -->
+    <section id="order" class="section order-section">
+        <h2 class="section-title">How would you like to order?</h2>
+        <p>Choose your preferred delivery partner or visit us in person.</p>
+        
+        <div class="order-buttons">
+            <!-- Replace '#' with your actual Zomato link -->
+            <a href="#" class="order-btn btn-zomato">
+                Order on Zomato
+            </a>
+            
+            <!-- Replace '#' with your actual Swiggy link -->
+            <a href="#" class="order-btn btn-swiggy">
+                Order on Swiggy
+            </a>
+            
+            <!-- Link to Location/Contact -->
+            <a href="#location" class="order-btn btn-visit">
+                Visit Us
+            </a>
+        </div>
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section id="location" class="section">
+        <h2 class="section-title">Find Us</h2>
+        <div class="location-container">
+            <div class="info-box">
+                <h3>Opening Hours</h3>
+                <p>Mon - Fri: 7:00 AM - 8:00 PM</p>
+                <p>Sat - Sun: 8:00 AM - 9:00 PM</p>
+                <br>
+                <h3>Address</h3>
+                <p>123 Coffee Lane, Brew District</p>
+                <p>City Center, State 54321</p>
+                <br>
+                <h3>Contact</h3>
+                <p>+91 1234567890</p>
+                <p>Email</p>
+            </div>
+            
+            <!-- Google Maps Embed Placeholder -->
+            <iframe 
+                class="map-frame"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <p>&copy; 2023 The Daily Grind Cafe. All rights reserved.</p>
+        <p style="margin-top: 10px;">Follow us on Instagram | Facebook | Designed by Anushka Yeole</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
